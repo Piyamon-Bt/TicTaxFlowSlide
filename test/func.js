@@ -1,0 +1,37 @@
+const { chromium } = require('playwright');
+(async () => {
+  const b = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args:['--use-gl=swiftshader','--enable-unsafe-swiftshader'] });
+  const ctx = await b.newContext({ viewport:{width:1600,height:900} });
+  const p = await ctx.newPage();
+  const errs=[]; p.on('pageerror',e=>errs.push(e.message)); p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+  await p.goto('file://'+process.cwd()+'/index.html'); await p.waitForTimeout(800);
+  const ch = () => p.evaluate(()=>document.getElementById('chapNum').textContent);
+  const out = {};
+  await p.keyboard.press('PageDown'); await p.waitForTimeout(1100); out.pageDown = await ch();
+  await p.keyboard.press('Space'); await p.waitForTimeout(1100); out.space = await ch();
+  await p.keyboard.press('ArrowUp'); await p.waitForTimeout(1100); out.arrowUp = await ch();
+  await p.keyboard.press('End'); await p.waitForTimeout(1400); out.end = await ch();
+  await p.keyboard.press('Home'); await p.waitForTimeout(1400); out.home = await ch();
+  await p.keyboard.press('7'); await p.waitForTimeout(1400); out.digit7 = await ch();
+  await p.keyboard.press('1'); await p.keyboard.press('1'); await p.waitForTimeout(1400); out.digit11 = await ch();
+  await p.keyboard.press('p'); await p.waitForTimeout(500);
+  out.presenter = await p.evaluate(()=>({open:document.getElementById('presenter').dataset.open, title:document.getElementById('pTitle').textContent, script:document.getElementById('pScript').textContent.slice(0,24), target:document.getElementById('pTarget').textContent, pace:document.getElementById('pPace').textContent}));
+  await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+  out.presenterClosed = await p.evaluate(()=>document.getElementById('presenter').dataset.open);
+  await p.keyboard.press('?'); await p.waitForTimeout(400);
+  out.help = await p.evaluate(()=>document.getElementById('help').dataset.open);
+  await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+  await p.keyboard.press('m'); await p.waitForTimeout(600);
+  out.motionOff = await p.evaluate(()=>({reduced:document.body.classList.contains('reduced'), nowebgl:document.body.classList.contains('no-webgl'), pressed:document.getElementById('btnMotion').getAttribute('aria-pressed')}));
+  out.factsWithMotionOff = await p.evaluate(()=>{
+    const t=document.body.innerText.replace(/ /g,' ');
+    return ['1,642,350','91%','฿1,800,000','฿157,650'].filter(w=>t.indexOf(w)===-1);
+  });
+  await p.keyboard.press('m'); await p.waitForTimeout(600);
+  out.motionOn = await p.evaluate(()=>document.getElementById('btnMotion').getAttribute('aria-pressed'));
+  out.railCount = await p.evaluate(()=>document.querySelectorAll('#rail button').length);
+  out.landmarks = await p.evaluate(()=>({main:!!document.querySelector('main'), sections:document.querySelectorAll('section[role=region][aria-labelledby]').length, nav:!!document.querySelector('nav[aria-label]'), live:document.getElementById('live').textContent}));
+  out.errors = errs;
+  console.log(JSON.stringify(out,null,1));
+  await b.close();
+})();

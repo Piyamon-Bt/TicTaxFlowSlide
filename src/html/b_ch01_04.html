@@ -1,142 +1,184 @@
 <main class="deck" id="deck" tabindex="-1">
 
-<!-- ============ 01 OPENING ============ -->
-<!-- No audience-facing copy: the phone screen is the whole message.
-     The 3D phone is rendered on the fixed canvas behind this section, so the
-     section's own background is transparent. The markup below is the fallback
-     shown when WebGL is off or motion is disabled. -->
-<section class="chapter ch-hero" id="ch-1" data-ch="1" data-ground="ink" role="region" aria-labelledby="ch1-title">
-  <h1 class="sr-only" id="ch1-title">A Thai online seller's phone, filling up with new order notifications from Shopee, Lazada, Facebook and LINE.</h1>
-  <div class="inner hero-inner">
-    <div class="hero-phone" role="img" aria-label="Phone lock screen: order notifications arriving one after another from Shopee, LINE, Lazada and Facebook.">
-      <div class="hero-screen">
-        <span class="hero-notch" aria-hidden="true"></span>
-        <p class="hero-clock">20:26</p>
-        <p class="hero-date">วันพฤหัสบดี 2 ตุลาคม</p>
-        <p class="hero-pill">วันนี้ 38 ออเดอร์</p>
-        <div class="hero-list">
-          <div class="lockcard"><span class="lc-brand"><span class="brandlogo" role="img" aria-label="Shopee" style="--src:var(--logo-shopee);--ar:var(--logoar-shopee)"></span></span><i>ตอนนี้</i><span class="lc-msg">คำสั่งซื้อใหม่ 2 รายการ</span><span class="lc-amt">+฿2,380</span></div>
-          <div class="lockcard"><span class="lc-brand is-icon"><span class="brandlogo" role="img" aria-label="LINE" style="--src:var(--logo-line);--ar:var(--logoar-line)"></span></span><i>ตอนนี้</i><span class="lc-msg">โอนเงินเข้าบัญชีแล้ว</span><span class="lc-amt">+฿1,180</span></div>
-          <div class="lockcard"><span class="lc-brand"><span class="brandlogo" role="img" aria-label="Lazada" style="--src:var(--logo-lazada);--ar:var(--logoar-lazada)"></span></span><i>1 นาที</i><span class="lc-msg">ออเดอร์ใหม่</span><span class="lc-amt">+฿860</span></div>
-          <div class="lockcard"><span class="lc-brand"><span class="brandlogo" role="img" aria-label="Facebook" style="--src:var(--logo-facebook);--ar:var(--logoar-facebook)"></span></span><i>2 นาที</i><span class="lc-msg">ลูกค้าสั่งซื้อผ่านแชท</span><span class="lc-amt">+฿2,450</span></div>
-          <div class="lockcard"><span class="lc-brand is-icon"><span class="brandlogo" role="img" aria-label="LINE" style="--src:var(--logo-line);--ar:var(--logoar-line)"></span></span><i>4 นาที</i><span class="lc-msg">ลูกค้าสั่งซื้อเพิ่ม</span><span class="lc-amt">+฿790</span></div>
-          <div class="lockcard"><span class="lc-brand"><span class="brandlogo" role="img" aria-label="Shopee" style="--src:var(--logo-shopee);--ar:var(--logoar-shopee)"></span></span><i>6 นาที</i><span class="lc-msg">ลูกค้ากดสั่งซื้อแล้ว</span><span class="lc-amt">+฿640</span></div>
+<!-- ============ 01 OPENING ============
+     No audience-facing copy: the screen is the whole message. Every mockup in
+     the deck is the same MacBook, so the opening reads as the seller's own
+     desk rather than as a different device language. Rows land and the two
+     counters climb as the scene is scrolled; the order amounts, times and
+     totals are illustrative concept UI, not data. -->
+<section class="scene" id="ch-1" data-ch="1" data-ground="dark" data-scrub="hero"
+         data-stops="0 0.44 0.8" style="--len:2.4" role="region" aria-labelledby="ch1-title">
+  <div class="stage g-dark hero">
+    <h1 class="sr-only" id="ch1-title">One online seller's morning: orders arriving all day from Shopee, Lazada, Facebook and LINE, into four different places.</h1>
+    <div class="inner hero-inner">
+      <div class="macbook hero-mb">
+        <span class="device-glow" aria-hidden="true"></span>
+        <div class="mb-lid">
+          <span class="mb-cam" aria-hidden="true"></span>
+          <div class="mb-screen">
+            <div class="feed" role="img" aria-label="An order feed filling up through the day: new orders and transfers arriving from Shopee, LINE, Lazada and Facebook, one after another.">
+              <div class="feed-top">
+                <span class="ft-dot" aria-hidden="true"></span><span class="ft-dot" aria-hidden="true"></span><span class="ft-dot" aria-hidden="true"></span>
+                <p class="ft-l">Today</p>
+                <p class="ft-n"><b data-orders>0</b> orders</p>
+                <p class="ft-v">฿<span data-take>0</span></p>
+              </div>
+              <ul class="feed-rows">
+            <li class="frow" data-amt="2380" data-ord="2"><span class="fr-ch"><span class="brandlogo" role="img" aria-label="Shopee" style="--src:var(--logo-shopee);--ar:var(--logoar-shopee)"></span></span><span class="fr-msg" lang="th">คำสั่งซื้อใหม่ 2 รายการ</span><span class="fr-t" lang="th">ตอนนี้</span><span class="fr-amt">+฿2,380</span></li>
+            <li class="frow" data-amt="1180" data-ord="1"><span class="fr-ch is-icon"><span class="brandlogo" role="img" aria-label="LINE" style="--src:var(--logo-line);--ar:var(--logoar-line)"></span></span><span class="fr-msg" lang="th">โอนเงินเข้าบัญชีแล้ว</span><span class="fr-t" lang="th">ตอนนี้</span><span class="fr-amt">+฿1,180</span></li>
+            <li class="frow" data-amt="860" data-ord="1"><span class="fr-ch"><span class="brandlogo" role="img" aria-label="Lazada" style="--src:var(--logo-lazada);--ar:var(--logoar-lazada)"></span></span><span class="fr-msg" lang="th">ออเดอร์ใหม่</span><span class="fr-t" lang="th">1 นาที</span><span class="fr-amt">+฿860</span></li>
+            <li class="frow" data-amt="2450" data-ord="1"><span class="fr-ch"><span class="brandlogo" role="img" aria-label="Facebook" style="--src:var(--logo-facebook);--ar:var(--logoar-facebook)"></span></span><span class="fr-msg" lang="th">ลูกค้าสั่งซื้อผ่านแชท</span><span class="fr-t" lang="th">2 นาที</span><span class="fr-amt">+฿2,450</span></li>
+            <li class="frow" data-amt="790" data-ord="1"><span class="fr-ch is-icon"><span class="brandlogo" role="img" aria-label="LINE" style="--src:var(--logo-line);--ar:var(--logoar-line)"></span></span><span class="fr-msg" lang="th">ลูกค้าสั่งซื้อเพิ่ม</span><span class="fr-t" lang="th">4 นาที</span><span class="fr-amt">+฿790</span></li>
+            <li class="frow" data-amt="640" data-ord="1"><span class="fr-ch"><span class="brandlogo" role="img" aria-label="Shopee" style="--src:var(--logo-shopee);--ar:var(--logoar-shopee)"></span></span><span class="fr-msg" lang="th">ลูกค้ากดสั่งซื้อแล้ว</span><span class="fr-t" lang="th">6 นาที</span><span class="fr-amt">+฿640</span></li>
+            <li class="frow" data-amt="1520" data-ord="3"><span class="fr-ch"><span class="brandlogo" role="img" aria-label="Lazada" style="--src:var(--logo-lazada);--ar:var(--logoar-lazada)"></span></span><span class="fr-msg" lang="th">ออเดอร์ใหม่ 3 รายการ</span><span class="fr-t" lang="th">9 นาที</span><span class="fr-amt">+฿1,520</span></li>
+            <li class="frow" data-amt="3150" data-ord="1"><span class="fr-ch"><span class="brandlogo" role="img" aria-label="Shopee" style="--src:var(--logo-shopee);--ar:var(--logoar-shopee)"></span></span><span class="fr-msg" lang="th">คำสั่งซื้อใหม่</span><span class="fr-t" lang="th">12 นาที</span><span class="fr-amt">+฿3,150</span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="mb-chin" aria-hidden="true">MacBook Pro</p>
         </div>
-        <span class="hero-home" aria-hidden="true"></span>
+        <div class="mb-base" aria-hidden="true"><span class="mb-groove"></span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ 02 ONE SELLER, MANY CHANNELS ============ -->
-<section class="chapter ground-ink" id="ch-2" data-ch="2" data-ground="ink" role="region" aria-labelledby="ch2-title">
-  <div class="inner stage-split">
-    <div class="converge" role="img" aria-label="Four selling channels — Shopee, Lazada, Facebook and LINE — with revenue flowing inward to one seller at the centre.">
-      <svg viewBox="0 0 1000 820" aria-hidden="true">
-        <circle cx="500" cy="426" r="250" fill="none" stroke="#D4AF37" stroke-opacity=".14" stroke-dasharray="2 10"/>
-        <path class="flow" d="M500 142 L500 232"/>
-        <path class="flow" d="M214 338 L330 379" style="animation-delay:-.7s"/>
-        <path class="flow" d="M786 338 L670 379" style="animation-delay:-1.3s"/>
-        <path class="flow" d="M500 710 L500 622" style="animation-delay:-1.9s"/>
-      </svg>
-      <div class="node center" style="left:50%;top:49%">
-        <div class="rv rv--scale" style="--d:.2s">
-          <span class="sticker" role="img" aria-label="An online seller sitting with parcels, holding a packed box ready to ship."></span>
-          <p class="label">One taxpayer</p>
+<section class="scene" id="ch-2" data-ch="2" data-ground="dark"
+         data-stops="0.3 0.6 0.82" style="--len:2.4" role="region" aria-labelledby="ch2-title">
+  <div class="stage g-dark">
+    <div class="inner split">
+      <div class="converge" role="img" aria-label="Four selling channels — Shopee, Lazada, Facebook and LINE — with revenue flowing inward to one seller at the centre.">
+        <svg viewBox="0 0 1000 1020" aria-hidden="true">
+          <circle cx="500" cy="480" r="258" fill="none" stroke="#5b4be8" stroke-opacity=".12" stroke-dasharray="2 10"/>
+          <path class="flow a" data-r="0.14 0.3" d="M500 150 L500 246"/>
+          <path class="flow a" data-r="0.18 0.34" d="M206 358 L330 404"/>
+          <path class="flow a" data-r="0.22 0.38" d="M794 358 L670 404"/>
+          <path class="flow a" data-r="0.26 0.42" d="M500 826 L500 726"/>
+        </svg>
+        <div class="node center" style="left:50%;top:47%">
+          <div class="a a-in" data-r="0.02 0.26" style="--sc:.1">
+            <span class="sticker" role="img" aria-label="An online seller sitting with parcels, holding a packed box ready to ship."></span>
+            <p class="label">One taxpayer</p>
+          </div>
         </div>
+        <div class="node" style="left:50%;top:9%"><div class="a a-r" data-r="0.12 0.3" style="--tx:0px;--ty:-38px"><p class="chip"><span class="brandlogo" role="img" aria-label="Shopee" style="--src:var(--logo-shopee);--ar:var(--logoar-shopee)"></span></p><p class="sub">Marketplace</p></div></div>
+        <div class="node" style="left:13%;top:40%"><div class="a a-l" data-r="0.16 0.34"><p class="chip"><span class="brandlogo" role="img" aria-label="Lazada" style="--src:var(--logo-lazada);--ar:var(--logoar-lazada)"></span></p><p class="sub">Marketplace</p></div></div>
+        <div class="node" style="left:87%;top:40%"><div class="a a-r" data-r="0.2 0.38"><p class="chip"><span class="brandlogo" role="img" aria-label="Facebook" style="--src:var(--logo-facebook);--ar:var(--logoar-facebook)"></span></p><p class="sub">Social</p></div></div>
+        <div class="node" style="left:50%;top:93%"><div class="a a-soft" data-r="0.24 0.42" style="--ty:38px"><p class="chip is-icon"><span class="brandlogo" role="img" aria-label="LINE" style="--src:var(--logo-line);--ar:var(--logoar-line)"></span></p><p class="sub">Chat &amp; transfer</p></div></div>
       </div>
-      <div class="node node--top" style="left:50%;top:10%"><div class="rv" style="--d:.6s"><p class="chip chip--brand"><span class="brandlogo" role="img" aria-label="Shopee" style="--src:var(--logo-shopee);--ar:var(--logoar-shopee)"></span></p><p class="sub">Marketplace</p></div></div>
-      <div class="node node--left" style="left:14%;top:40%"><div class="rv" style="--d:.75s"><p class="chip chip--brand"><span class="brandlogo" role="img" aria-label="Lazada" style="--src:var(--logo-lazada);--ar:var(--logoar-lazada)"></span></p><p class="sub">Marketplace</p></div></div>
-      <div class="node node--right" style="left:86%;top:40%"><div class="rv" style="--d:.9s"><p class="chip chip--brand"><span class="brandlogo" role="img" aria-label="Facebook" style="--src:var(--logo-facebook);--ar:var(--logoar-facebook)"></span></p><p class="sub">Social</p></div></div>
-      <div class="node node--bottom" style="left:50%;top:92%"><div class="rv" style="--d:1.05s"><p class="chip chip--brand is-icon"><span class="brandlogo" role="img" aria-label="LINE" style="--src:var(--logo-line);--ar:var(--logoar-line)"></span></p><p class="sub">Chat &amp; transfer</p></div></div>
-    </div>
-    <div class="copy">
-      <p class="kicker rv" style="--d:.1s">Chapter 02 — Situation</p>
-      <div class="ratio rv" style="--d:.35s">
-        <span class="num" data-count-to="4" data-count-plain="1">4<span class="cap">Channels</span></span>
-        <span class="sep">/</span>
-        <span class="num alt">1<span class="cap">Taxpayer</span></span>
-      </div>
-      <h2 class="headline rv" id="ch2-title" style="--d:.55s;font-size:var(--fs-h2)">4 Channels. 1 Taxpayer.</h2>
-      <p class="lead rv" style="--d:1.3s">Revenue arrives in four different places. Tax responsibility lands on one person.</p>
-      <p class="note rv" style="--d:1.6s">At filing time every stream has to be added back together — and today the shop owner is the one doing the adding.</p>
-    </div>
-  </div>
-</section>
 
-<!-- ============ 03 THE INVISIBLE NUMBER ============ -->
-<section class="chapter ground-ink" id="ch-3" data-ch="3" data-ground="ink" role="region" aria-labelledby="ch3-title">
-  <div class="inner">
-    <p class="kicker rv" style="--d:.1s">Chapter 03 — The problem</p>
-    <div class="threshold" style="margin-top:clamp(10px,2svh,26px)">
-      <div class="bignum">
-        <span class="flashframe" id="flash3" aria-hidden="true"></span>
-        <p class="mega rv" style="--d:.3s"><span class="baht">฿</span><span id="ch3num">1,800,000</span></p>
-        <p class="cap rv" style="--d:.6s">VAT registration threshold · figure as given in the pitch source</p>
-        <h2 class="headline rv" id="ch3-title" style="--d:.8s;font-size:var(--fs-h2);margin-top:.5em">The number nobody sees.</h2>
-        <div class="fact-strip">
-          <div class="fact rv" style="--d:1.1s"><b>What sellers see</b><span class="muted">A Shopee total. A Lazada total. A bank transfer. Three answers, never one.</span></div>
-          <div class="fact rv" style="--d:1.3s"><b>What matters</b><span class="muted">One combined, continuously updated annual figure — the only number the threshold cares about.</span></div>
+      <div class="copy">
+        <p class="eyebrow a a-soft" data-r="0.3 0.44">Situation</p>
+        <div class="ratio a a-soft" data-r="0.34 0.5">
+          <span class="num">4<span class="cap">Channels</span></span>
+          <span class="sep">/</span>
+          <span class="num alt">1<span class="cap">Taxpayer</span></span>
         </div>
-      </div>
-      <div class="ladder" aria-label="Accumulated annual revenue climbing toward the threshold">
-        <div class="rung rv" style="--d:1.0s"><span class="val">฿420K</span><span class="bar"><i style="--w:23%;--d:1.2s"></i></span><span class="pct">23%</span></div>
-        <div class="rung rv" style="--d:1.2s"><span class="val">฿870K</span><span class="bar"><i style="--w:48%;--d:1.5s"></i></span><span class="pct">48%</span></div>
-        <div class="rung rv" style="--d:1.4s"><span class="val">฿1.34M</span><span class="bar"><i style="--w:74%;--d:1.8s"></i></span><span class="pct">74%</span></div>
-        <div class="rung rv" style="--d:1.6s"><span class="val">฿1.72M</span><span class="bar"><i style="--w:96%;--d:2.1s"></i></span><span class="pct">96%</span></div>
-        <div class="rung alert rv" style="--d:1.9s"><span class="val">⚠ ฿1.80M</span><span class="bar"><i style="--w:100%;--d:2.4s"></i></span><span class="pct">100%</span></div>
-        <p class="note" style="margin-top:12px">By the time the combined number is known, it can already be too late to prepare.</p>
-        <p class="note" style="opacity:.5">Threshold figure carried from the pitch source. Confirm current Revenue Department rules before any public use.</p>
+        <h2 class="headline a a-soft" id="ch2-title" data-r="0.4 0.58">4 Channels.<br>1 Taxpayer.</h2>
+        <p class="lead a a-soft" data-r="0.52 0.7">Revenue arrives in four different places. Tax responsibility lands on one person.</p>
+        <p class="note a a-soft" data-r="0.6 0.78">At filing time every stream has to be added back together — and today the shop owner is the one doing the adding.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 TAX COMPLEXITY ============ -->
-<section class="chapter ground-ink" id="ch-4" data-ch="4" data-ground="ink" role="region" aria-labelledby="ch4-title" style="--next-ground:var(--ivory-a)">
-  <div class="inner complex">
-    <div class="copy">
-      <p class="kicker rv" style="--d:.1s">Chapter 04 — And tax itself is complicated</p>
-      <h2 class="headline th rv" id="ch4-title" style="--d:.3s" lang="th">หักตามจริง หรือ เหมา?</h2>
-      <p class="note rv" style="--d:.55s">Actual expenses, or the standard deduction?</p>
-      <div class="qstack">
-        <p class="q th rv" lang="th" style="--d:1.0s"><i>01</i>ต้องยื่นเมื่อไร?<em>When do I file?</em></p>
-        <p class="q th rv" lang="th" style="--d:2.0s"><i>02</i>ใบเสร็จนี้ใช้ได้ไหม?<em>Does this receipt count?</em></p>
-        <p class="q th rv" lang="th" style="--d:3.0s"><i>03</i>VAT ถึงหรือยัง?<em>Am I at the threshold yet?</em></p>
+<!-- ============ 03 THE INVISIBLE NUMBER ============
+     One scrubbed count. The figure, the track and the marks are all a single
+     reading of scroll position, so scrubbing back replays it exactly. -->
+<section class="scene" id="ch-3" data-ch="3" data-ground="dark" data-scrub="number"
+         data-stops="0.2 0.42 0.64 0.95" style="--len:3" role="region" aria-labelledby="ch3-title">
+  <div class="stage g-dark">
+    <div class="inner numstage">
+      <p class="eyebrow a a-soft" data-r="0 0.1">The problem</p>
+      <p class="mega a a-in" data-r="0.02 0.16" aria-hidden="true"><span class="baht">฿</span><span data-num>0</span></p>
+      <p class="sr-only">Accumulated annual revenue climbing from ฿420,000 to the ฿1,800,000 VAT registration threshold.</p>
+      <p class="cap a a-soft" data-r="0.06 0.2">VAT registration threshold</p>
+
+      <div class="track a a-soft" data-r="0.08 0.22">
+        <div class="bar"><i></i><b></b></div>
+        <div class="marks" aria-hidden="true">
+          <span>฿420K</span><span>฿870K</span><span>฿1.34M</span><span>฿1.72M</span><span class="alert">⚠ ฿1.80M</span>
+        </div>
       </div>
-      <p class="lead rv" style="--d:3.6s;font-size:var(--fs-body);max-width:52ch">Normal questions for an accountant. They should not be the entry requirement for someone who simply wants to sell online.</p>
-    </div>
-    <div class="tree" role="img" aria-label="A decision tree: your tax splits into actual cost or standard deduction, then into document and filing questions, all landing back on the seller.">
-      <div class="clutter" aria-hidden="true">
-        <span class="paper" style="--d:.6s;left:4%;top:8%;width:74px;height:96px;transform:rotate(-11deg)"></span>
-        <span class="paper" style="--d:.9s;right:6%;top:4%;width:62px;height:84px;transform:rotate(9deg)"></span>
-        <span class="paper" style="--d:1.2s;left:10%;bottom:10%;width:86px;height:64px;transform:rotate(6deg)"></span>
-        <span class="paper" style="--d:1.5s;right:2%;bottom:16%;width:70px;height:92px;transform:rotate(-8deg)"></span>
-        <span class="paper" style="--d:1.8s;left:44%;top:2%;width:58px;height:76px;transform:rotate(14deg)"></span>
-        <span class="paper" style="--d:2.1s;right:24%;bottom:2%;width:64px;height:80px;transform:rotate(-5deg)"></span>
+
+      <h2 class="headline a a-in" id="ch3-title" data-r="0.86 0.95"
+          style="margin-top:clamp(24px,4svh,52px)">The number nobody sees.</h2>
+
+      <div class="facts">
+        <div class="fact a a-soft" data-r="0.9 0.97"><b>What sellers see</b><span>A Shopee total. A Lazada total. A bank transfer. Three answers, never one.</span></div>
+        <div class="fact a a-soft" data-r="0.93 1"><b>What matters</b><span>One combined, continuously updated annual figure — the only number the threshold cares about.</span></div>
       </div>
-      <svg viewBox="0 0 600 520" aria-hidden="true">
-        <path class="branch" style="--len:230;--d:.7s" d="M300 78 C300 130 160 130 152 176"/>
-        <path class="branch" style="--len:230;--d:.9s" d="M300 78 C300 130 440 130 448 176"/>
-        <path class="branch" style="--len:220;--d:1.5s" d="M152 232 C152 292 268 286 292 322"/>
-        <path class="branch" style="--len:220;--d:1.7s" d="M448 232 C448 292 332 286 308 322"/>
-        <path class="branch" style="--len:120;--d:2.3s" d="M300 372 L300 424"/>
-        <g fill="none" stroke="#D4AF37" stroke-opacity=".55">
-          <rect x="228" y="34" width="144" height="44" rx="22"/>
-          <rect x="76" y="176" width="152" height="56" rx="10"/>
-          <rect x="372" y="176" width="152" height="56" rx="10"/>
-          <circle cx="300" cy="348" r="26"/>
-          <rect x="212" y="424" width="176" height="52" rx="10"/>
-        </g>
-        <text x="300" y="62" text-anchor="middle" font-size="17" letter-spacing="2.4" fill="#D4AF37">YOUR TAX</text>
-        <text x="152" y="200" text-anchor="middle" font-size="15" letter-spacing="1.6">ACTUAL COST</text>
-        <text x="152" y="220" text-anchor="middle" font-size="12" opacity=".55" font-weight="400">keep every receipt</text>
-        <text x="448" y="200" text-anchor="middle" font-size="15" letter-spacing="1.6">STANDARD</text>
-        <text x="448" y="220" text-anchor="middle" font-size="12" opacity=".55" font-weight="400">rate by activity type</text>
-        <text x="300" y="356" text-anchor="middle" font-size="26" fill="#F2CE6B">?</text>
-        <text x="300" y="456" text-anchor="middle" font-size="16" letter-spacing="2.2">THE SELLER</text>
-      </svg>
+      <p class="note a a-soft" data-r="0.95 1">Threshold figure carried from the pitch source. Confirm current Revenue Department rules before any public use.</p>
     </div>
   </div>
-  <svg class="tear" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,60 L0,14 L84,28 L176,10 L268,24 L364,8 L462,22 L558,6 L652,20 L752,32 L850,14 L948,28 L1046,10 L1148,26 L1246,8 L1344,22 L1440,10 L1440,60 Z"/></svg>
+</section>
+
+<!-- ============ 04 TAX COMPLEXITY ============
+     The three source questions cross-fade in place, centre screen, then
+     resolve into the headline the source specifies verbatim. -->
+<section class="scene" id="ch-4" data-ch="4" data-ground="dark" data-scrub="questions"
+         data-stops="0.23 0.45 0.67 0.95" style="--len:2.8" role="region" aria-labelledby="ch4-title">
+  <div class="stage g-dark">
+    <div class="paperfall" aria-hidden="true">
+      <span style="left:5%;top:14%;width:76px;height:98px"></span>
+      <span style="right:7%;top:8%;width:64px;height:86px"></span>
+      <span style="left:12%;bottom:14%;width:88px;height:66px"></span>
+      <span style="right:4%;bottom:20%;width:72px;height:94px"></span>
+      <span style="left:46%;top:4%;width:60px;height:78px"></span>
+      <span style="right:26%;bottom:6%;width:66px;height:82px"></span>
+    </div>
+    <div class="inner mid">
+      <p class="eyebrow a a-soft" data-r="0 0.1 0.86 0.94">Tax itself is complicated</p>
+
+      <div class="qswap">
+        <p class="q a a-hold" data-r="0.08 0.2 0.26 0.36"><span class="qn" aria-hidden="true">01</span>When to file?</p>
+        <p class="q a a-hold" data-r="0.3 0.42 0.48 0.58"><span class="qn" aria-hidden="true">02</span>Can this receipt be claimed?</p>
+        <p class="q a a-hold" data-r="0.52 0.64 0.7 0.8"><span class="qn" aria-hidden="true">03</span>VAT threshold reached?</p>
+      </div>
+
+      <h2 class="headline a a-in" id="ch4-title" data-r="0.76 0.9">Actual Expenses<br>or Standard Deduction?</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 WHY NOW ============
+     The urgency beat. The signature device is the seller's own fiscal year:
+     fifteen months with the two filing windows lit, because "two filings a
+     year, not one" is the single fact most sellers get wrong. -->
+<section class="scene" id="ch-5" data-ch="5" data-ground="dark" data-scrub="calendar"
+         data-stops="0.26 0.54 0.84" style="--len:2.8" role="region" aria-labelledby="ch5-title">
+  <div class="stage g-dark">
+    <div class="inner dense">
+      <p class="eyebrow a a-soft" data-r="0 0.1">Why now</p>
+      <h2 class="headline wide a a-in" data-r="0.03 0.18" id="ch5-title">The quiet years are ending.</h2>
+      <p class="lead a a-soft" data-r="0.1 0.24">From 2026, e-commerce platforms report seller income to the Revenue Department directly. “I didn’t know” stops being a place to hide.</p>
+
+      <div class="yearbar a a-soft" data-r="0.2 0.36" role="img"
+           aria-label="One seller's tax year: a half-year filing, Por Ngor Dor 94, falls between July and September, and the full-year filing, Por Ngor Dor 90, between January and March of the following year.">
+        <div class="ybmonths" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i>
+          <i class="on"></i><i class="on"></i><i class="on"></i>
+          <i></i><i></i><i></i>
+          <i class="on b"></i><i class="on b"></i><i class="on b"></i>
+        </div>
+        <div class="ybwins" aria-hidden="true">
+          <span class="ybwin w1"><b lang="th">ภ.ง.ด.94</b>Half year · Jul–Sep</span>
+          <span class="ybwin w2"><b lang="th">ภ.ง.ด.90</b>Full year · Jan–Mar</span>
+        </div>
+        <div class="ybyears" aria-hidden="true"><span>Tax year</span><span>Following year</span></div>
+      </div>
+
+      <ul class="stack">
+        <li class="a a-soft" data-r="0.42 0.56"><b>Two filings a year, not one</b>
+          <span>Most sellers plan for March and miss the mid-year round entirely.</span></li>
+        <li class="a a-soft" data-r="0.5 0.64"><b>Two ways to deduct, and you choose</b>
+          <span>Actual cost with every receipt kept, or the standard 40–60% rate for your activity. Choose wrong and you simply overpay.</span></li>
+        <li class="a a-soft" data-r="0.58 0.72"><b>฿1,800,000 changes the job</b>
+          <span>Cross it and VAT registration applies — then a VAT filing every month, not twice a year.</span></li>
+      </ul>
+
+      <p class="note a a-soft" data-r="0.7 0.84">Filing periods, deduction rates and the platform-reporting change are carried from the project brief and the Revenue Code. Confirm the effective date and scope with the Revenue Department before any public use.</p>
+    </div>
+  </div>
 </section>

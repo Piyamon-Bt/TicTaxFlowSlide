@@ -4,8 +4,10 @@
 (function () {
   var S = (window.TTF = window.TTF || {});
 
-  var GROUND = { ink: 0x0B0B0C, ivory: 0xFBFBFC };
-  var DUST_ON_INK = 0xE6E6EA, DUST_ON_IVORY = 0x8A8A93;
+  /* Apple-neutral grounds. Both naming schemes resolve so the layer keeps
+     working whichever vocabulary the markup uses. */
+  var GROUND = { dark: 0x0B0D1A, light: 0xF8FAFC, ink: 0x0B0D1A, ivory: 0xF8FAFC };
+  var DUST_ON_INK = 0xD9DCF2, DUST_ON_IVORY = 0x8E93AD;
 
   var renderer, scene, camera, clock = 0, raf = 0, live = false;
   var systems = [], dpr = 1;
@@ -13,6 +15,7 @@
   var cam = { x: 0, y: 0, z: 60, tx: 0, ty: 0, tz: 60, vx: 0, vy: 0, vz: 0 };
   var ground = null, groundTarget = null;
   var chapter = 1, chapterAt = 0, slow = 0;
+  var base = { x: 0, y: 0, z: 60 };
 
   function rand(a, b) { return a + Math.random() * (b - a); }
 
@@ -91,7 +94,7 @@
   function buildStreams() {
     var LANES = [[0, 21, -4], [-32, 4, -4], [32, 4, -4], [0, -21, -4]];
     var PER = 120, N = LANES.length * PER;
-    var p = points(N, 1.5, 0xD4AF37, discTexture(), 0);
+    var p = points(N, 1.5, 0x5B4BE8, discTexture(), 0);
     var u = [];
     for (var i = 0; i < N; i++) u.push(Math.random());
     return {
@@ -309,10 +312,10 @@
     var g = new THREE.Group(), meshes = [], soft = softTexture();
     /* x, y, z, w, h, colour, peak opacity */
     var conf = [
-      [-40, 14, -34, 30, 20, 0xD4AF37, .11],
+      [-40, 14, -34, 30, 20, 0x5B4BE8, .11],
       [38, -10, -28, 26, 34, 0xF0F0F3, .08],
       [-16, -22, -20, 24, 14, 0xF2CE6B, .08],
-      [22, 20, -44, 36, 22, 0xD4AF37, .07]
+      [22, 20, -44, 36, 22, 0x6E5BEA, .07]
     ];
     conf.forEach(function (c) {
       var m = new THREE.MeshBasicMaterial({ color: c[5], map: soft, transparent: true, opacity: 0, depthWrite: false });
@@ -346,13 +349,13 @@
     /* the layer is soft blobs, so 1.5x is indistinguishable from 2x and much cheaper */
     dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth > 2560 ? 1.25 : 1.5);
     renderer.setPixelRatio(dpr);
-    renderer.setClearColor(GROUND.ink, 1);
+    renderer.setClearColor(GROUND.dark, 1);
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(48, 1, 1, 260);
     camera.position.set(0, 0, 60);
-    ground = new THREE.Color(GROUND.ink);
-    groundTarget = new THREE.Color(GROUND.ink);
+    ground = new THREE.Color(GROUND.dark);
+    groundTarget = new THREE.Color(GROUND.dark);
 
     addStudio();
     systems = [buildDust(), buildStreams(), buildRevenue(), buildClutter(), buildGlow(), buildPlanes()];
@@ -361,7 +364,7 @@
     });
     if (boxes) systems.push(boxes);
     var money = buildProp('money', {
-      color: 0xD4AF37, spec: 0xFFE9A8, shine: 42, peak: .46, chapters: [3], slots: MONEY_SLOTS
+      color: 0x6E5BEA, spec: 0xC9BFFF, shine: 42, peak: .40, chapters: [3], slots: MONEY_SLOTS
     });
     if (money) systems.push(money);
     var phone = buildPhone();
@@ -405,12 +408,13 @@
   function setChapter(n, groundName) {
     chapter = n; chapterAt = clock;
     var c = CAMS[n] || [0, 0, 58];
-    cam.tx = c[0]; cam.ty = c[1]; cam.tz = c[2];
-    groundTarget.setHex(GROUND[groundName] || GROUND.ink);
-    var onInk = groundName !== 'ivory';
+    base.x = c[0]; base.y = c[1]; base.z = c[2];
+    cam.tx = base.x; cam.ty = base.y; cam.tz = base.z;
+    groundTarget.setHex(GROUND[groundName] || GROUND.dark);
+    var onInk = groundName !== 'ivory' && groundName !== 'light';
     systems.forEach(function (s) {
       if (s.name === 'dust') {
-        s.obj.material.color.setHex(onInk ? DUST_ON_INK : 0x8A8A93);
+        s.obj.material.color.setHex(onInk ? DUST_ON_INK : DUST_ON_IVORY);
         s.target = onInk ? .5 : .34;
       } else if (s.chapters) {
         var on = s.chapters.indexOf(n) >= 0;
@@ -418,6 +422,19 @@
         s.target = on ? 1 : 0;
       }
     });
+  }
+
+  /* Scroll position inside the current chapter, 0 -> 1. The camera pushes in
+     across the chapter and drifts up slightly, so the depth layer moves with
+     the hand instead of on its own clock. DOLLY is per chapter: the opening
+     gets the strongest push because the phone is the only lit object in it. */
+  var DOLLY = { 1: -16, 2: -7, 3: -6, 4: -5, 7: -8 };
+
+  function setProgress(n, p) {
+    if (n !== chapter) return;
+    var d = DOLLY[n] || -4;
+    cam.tz = base.z + d * p;
+    cam.ty = base.y + p * 1.6;
   }
 
   function frame(ms) {
@@ -444,7 +461,7 @@
     camera.lookAt(0, 0, 0);
 
     /* ground colour easing */
-    ground.lerp(groundTarget, Math.min(1, dt * 5));
+    ground.lerp(groundTarget, Math.min(1, dt * 9));
     renderer.setClearColor(ground, 1);
 
     var since = clock - chapterAt;
@@ -478,5 +495,6 @@
     if (renderer) { renderer.dispose(); }
   }
 
-  S.three = { init: init, start: start, stop: stop, dispose: dispose, setChapter: setChapter, resize: resize };
+  S.three = { init: init, start: start, stop: stop, dispose: dispose,
+    setChapter: setChapter, setProgress: setProgress, resize: resize };
 })();

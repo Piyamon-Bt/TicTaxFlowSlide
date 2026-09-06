@@ -39,7 +39,7 @@ is launched, has users, has revenue, or has been validated by any authority.
 | Threshold alerts | Ch.07 revenue card, Ch.10 Automated tier | inline **Roadmap** chip |
 | Tax dashboard automation | Ch.10 Automated tier | "Roadmap · not built" |
 
-**No integration or partnership is claimed anywhere.** Chapter 08 carries this sentence on
+**No integration or partnership is claimed anywhere.** Chapter 09 carries this sentence on
 screen, under the laptop: *"Screens from the working build; the amounts on them are test data.
 Marketplace connections to Shopee, Lazada, Facebook or LINE are roadmap — no partnership or
 integration is in place or announced."*
@@ -47,7 +47,7 @@ integration is in place or announced."*
 Platform names appear only as (a) the places a seller's revenue arrives, in the story, and (b)
 roadmap targets. The platform logos supplied by the presenter are shown, unmodified, to name those
 channels (chapters 01 and 02) — in both cases as where a seller's orders come from, never as a
-connection to TicTaxFlow. Chapter 08 names them in text only, inside the sentence that denies any
+connection to TicTaxFlow. Chapters 09 and 13 name them in text only, inside the sentence that denies any
 partnership or integration. See `factual-verification.md` §7a.
 
 ---
@@ -62,12 +62,12 @@ partnership or integration. See `factual-verification.md` §7a.
 
 ## Illustrative, not real data
 
-The Chapter 01 phone lock screen — order notifications, amounts, the orders-today counter,
-the clock — is an illustration of a normal selling day. It claims nothing and is not our
+The Chapter 01 order feed — rows, amounts and the two counters — is an illustration of a normal
+selling day. It claims nothing and is not our
 data (detailed in `factual-verification.md` §8).
 
-Chapter 07 shows the **real** TicTaxFlow landing page on a laptop. The card floated over it —
+Chapter 08 shows the **real** TicTaxFlow landing page on a laptop. The card floated over it —
 ฿1,642,350, 91 %, ฿157,650 — is the illustrative example from the source outline, and the slide
 says so in its note. "Threshold alerts" on that card is tagged **Roadmap**.
 
-Chapter 12's three team cards carry **placeholder names** until the real team is filled in.
+Chapter 15's three team cards carry the team's real names and roles.

@@ -1,4 +1,4 @@
-# TicTaxFlow — 12-Chapter Content Map
+# TicTaxFlow — 15-Chapter Content Map
 
 Source of truth: the shared ChatGPT conversation *"วางโครงการ Pitching"* (12-slide, 10-minute
 pitch outline for TicTaxFlow, with Thai speaker scripts), plus the project brief supplied by the
@@ -6,35 +6,48 @@ presenter. Every headline, number and story beat below traces back to one of tho
 Nothing in this map is invented. Items that need external validation are flagged
 **[VERIFY]** and are listed in `factual-verification.md`.
 
-Language decision: **English-primary.** One headline stays in Thai because the source and the
-brief specify it verbatim (Ch.04); the Thai notification copy on the Chapter 01 phone is Thai
-because that is what a Thai seller's phone shows. Speaker notes are kept in the original Thai,
-with a short English cue line, because the pitch is delivered in Thai.
+Language decision: **English throughout.** The Thai notification copy on the Chapter 01 phone
+stays Thai because that is what a Thai seller's phone actually shows. Speaker notes are kept in
+the original Thai, with a short English cue line, because the pitch is delivered in Thai.
+Chapter 04's headline was the one remaining Thai line on screen; it now reads *"Actual Expenses
+or Standard Deduction?"*, and its three questions are the short English forms below. The Thai
+wording is still what the presenter says — it lives in the chapter-04 speaker script.
 
-Narrative spine: **Seller → Complexity → Risk → TicTaxFlow → Magic Moment → Vision → Market →
-Business Model → Why Us → Mission**
+Narrative spine: **Seller → Complexity → Risk → Why Now → TicTaxFlow → Magic Moment → The Gap →
+Market → Business Model → Feasibility → Why Us → Mission**
 
-Total target runtime: **10:00** (sum of chapter targets below = 9:40, leaving ~20 s of buffer for
-pauses on Ch.05 and Ch.07).
+Three chapters were added after the first build, drawn from the project brief, to close the gaps a
+business-and-finance panel scores hardest: **05 Why Now** (urgency and the real shape of the
+obligation), **10 The Gap** (why this is not already solved), and **13 Feasibility** (what is
+actually built, and the risks the team planned for).
+
+Total target runtime: **10:00** — the fifteen chapter targets below sum to exactly 600 seconds.
+That is tight for fifteen chapters, so the opening (0:25) and the closing (0:25) are deliberately
+short and the three chapters that carry the argument (07, 08, 13) get the most room.
 
 ---
 
-## 01 — Opening · the seller's phone
+## 01 — Opening · the seller's desk
 
 | Field | Value |
 |---|---|
 | Chapter label | OPENING |
 | On-screen copy | **None.** No kicker, no headline, no supporting line. |
-| Target time | 0:30 |
+| Target time | 0:25 |
 | Product named? | **No.** TicTaxFlow must not appear yet. |
 
-The whole chapter is one image: the seller's phone, filling up with order
-notifications faster than anyone could keep track of. The 3D phone (from the supplied
-model) floats centre-screen with a live lock screen; a new order notification lands every
-0.7–1.1 s from Shopee, LINE, Lazada and Facebook, the stack pushes upward, and the
-"orders today" pill keeps ticking up. Nothing is written on the slide, so the audience
-watches the phone and listens to the presenter — the Apple-keynote opening the source
-outline asked for.
+The whole chapter is one image: the seller's screen filling up with orders faster than
+anyone could keep track of. A MacBook holds an order feed; **scroll lands the rows**, and the two
+counters in its header are simply the running sum of the rows on screen — 11 orders, ฿12,970 by
+the end of the scene. Nothing is written on the slide, so the audience watches the screen and
+listens to the presenter.
+
+**The device changed in the second revision.** Every mockup in the deck is now the same MacBook,
+so the deck has one device language instead of two. The 3D iPhone that used to open it has been
+dropped from the build (its sources are kept in `src/js/phone*.js`), which also took ~400 KB out
+of `index.html`. The trade-off is real and worth stating: a phone lock screen is the more literal
+picture of a seller's day, and some of that intimacy is lost. What is gained is that the opening
+now shows the *same surface* the product itself runs on, which sets up chapters 08 and 09.
 
 The Thai headlines that used to sit here (ขายดีขึ้นทุกวัน / แต่คุณรู้ไหมว่า… ต้องเสียภาษีเท่าไร?)
 are now **spoken**, not printed. They remain in the presenter script for chapter 01, so the
@@ -43,8 +56,9 @@ words still land — the slide simply does not compete with them.
 Facts carried, entirely through the visual: four selling channels (Shopee, Lazada, Facebook,
 LINE); orders arrive continuously through the day; the business is clearly growing.
 
-Screen content is illustrative concept UI (see `factual-verification.md` §8): the order
-amounts, the time, the date and the orders-today count are story props, not data.
+Screen content is illustrative concept UI (see `factual-verification.md` §8): the order amounts,
+the relative times and both counters are story props, not data. They are at least internally
+consistent — the header total is the arithmetic sum of the rows shown beneath it.
 
 Speaker note (TH, from source): ลองนึกภาพแม่ค้าออนไลน์คนหนึ่ง ทุกเช้าเธอเปิด Shopee ดูยอดขาย ตอนบ่ายมีลูกค้าจาก
 Facebook ตอนเย็นมีเงินเข้าจาก LINE ธุรกิจกำลังโตขึ้นเรื่อย ๆ ซึ่งควรจะเป็นเรื่องที่ดี… จนกระทั่งมีคำถามหนึ่งเกิดขึ้น — ปีนี้เราต้องเสียภาษีเท่าไร?
@@ -112,19 +126,21 @@ VAT ปัญหาคือเจ้าของร้านไม่ได้�
 
 ---
 
-## 04 — Tax Complexity · "หักตามจริง หรือ เหมา?"
+## 04 — Tax Complexity
 
 | Field | Value |
 |---|---|
 | Chapter label | COMPLEXITY |
-| Headline | หักตามจริง หรือ เหมา? |
-| English support line | Actual expenses, or the standard deduction? |
+| Chapter label | Tax itself is complicated |
+| Headline | Actual Expenses or Standard Deduction? |
+| Thai source line (spoken, not printed) | หักตามจริง หรือ เหมา? |
 | Target time | 0:50 |
 
-Three supporting questions revealed one at a time (source order):
-1. ต้องยื่นเมื่อไร? — *When do I file?*
-2. ใบเสร็จนี้ใช้ได้ไหม? — *Does this receipt count?*
-3. VAT ถึงหรือยัง? — *Am I at the VAT threshold yet?*
+Three supporting questions, revealed one at a time in source order. Each cross-fades in place at
+display size, centre screen, so only one is ever on the slide:
+1. **When to file?** — ต้องยื่นเมื่อไร?
+2. **Can this receipt be claimed?** — ใบเสร็จนี้ใช้ได้ไหม?
+3. **VAT threshold reached?** — VAT ถึงหรือยัง?
 
 Also from the source's decision-tree sketch: the expense branch is **Actual cost** vs
 **standard/lump-sum deduction (มาตรา 40(8) framing in the source)**. The site labels the branches
@@ -139,7 +155,42 @@ Speaker note (TH): และแม้จะรวมรายได้ได้�
 
 ---
 
-## 05 — Product Reveal
+## 05 — Why Now
+
+| Field | Value |
+|---|---|
+| Chapter label | Why now |
+| Headline | The quiet years are ending. |
+| Sub-line | From 2026, e-commerce platforms report seller income to the Revenue Department directly. "I didn't know" stops being a place to hide. |
+| Target time | 0:45 |
+
+The urgency chapter, and the last beat of the problem act. Its hero is the deck's one bespoke
+diagram: **fifteen month cells with the two Thai filing windows lit** — `ภ.ง.ด.94` across Jul–Sep and
+`ภ.ง.ด.90` across Jan–Mar of the following year. The cells sweep in with scroll, so the year passes
+rather than appearing.
+
+Three facts sit under the strip:
+
+| # | Fact | Why it is on the slide |
+|---|---|---|
+| 1 | Two filings a year, not one | Most sellers plan for March and miss the mid-year round entirely |
+| 2 | Two ways to deduct, and you choose | Actual cost with every receipt kept, or the standard 40–60 % rate for the activity. Choosing wrong simply overpays |
+| 3 | ฿1,800,000 changes the job | Cross it and VAT registration applies — then a VAT filing every month, not twice a year |
+
+Key message: the obligation is not one deadline and one calculation. It is two deadlines, a choice
+with money riding on it, and a threshold that changes the job entirely — and the window in which
+none of that was being checked is closing.
+
+**[VERIFY — four separate claims.]** The 2026 platform-reporting change, the ภ.ง.ด.94 / ภ.ง.ด.90
+filing periods, the 40–60 % standard deduction band, and the monthly VAT filing obligation are all
+carried from the project brief and the Revenue Code. Every one must be confirmed against current
+Revenue Department rules before any public use. The slide carries that caveat visibly.
+
+Speaker note (TH): the chapter-05 script in `src/js/content.js`.
+
+---
+
+## 06 — Product Reveal
 
 | Field | Value |
 |---|---|
@@ -159,7 +210,7 @@ Speaker note (TH): นี่คือเหตุผลที่เราสร�
 
 ---
 
-## 06 — Three Assistants
+## 07 — Three Assistants
 
 | Field | Value |
 |---|---|
@@ -184,7 +235,7 @@ Speaker note (TH): TicTaxFlow ทำงานเหมือนมีผู้�
 
 ---
 
-## 07 — The Magic Moment
+## 08 — The Magic Moment
 
 | Field | Value |
 |---|---|
@@ -220,7 +271,7 @@ Speaker note (TH): สิ่งที่เราอยากให้ผู้�
 
 ---
 
-## 08 — Inside the product
+## 09 — Inside the product
 
 | Field | Value |
 |---|---|
@@ -256,7 +307,40 @@ Speaker note (TH): นี่คือของจริงที่รันอ�
 
 ---
 
-## 09 — Market Opportunity
+## 10 — The Gap
+
+| Field | Value |
+|---|---|
+| Chapter label | The gap |
+| Headline | Everyone calculates. Nobody consolidates. |
+| Target time | 0:45 |
+
+The chapter that answers "why hasn't someone already built this?". Two columns:
+
+| Already solved | Still manual, everywhere |
+|---|---|
+| Calculating personal income tax | Adding Shopee, Lazada, Facebook and LINE into one figure |
+| Filing to the Revenue Department | Separating 40(8) income from the rest |
+| Looking up what is deductible | Comparing actual cost against the standard rate |
+| | A warning *before* the ฿1.8M line, not after |
+
+Key message: we are not trying to out-calculate the incumbents. Calculation and filing are solved.
+The consolidation step — the part that costs a multi-channel seller their evening — is the part
+every tool still hands back to the user, and that is the wedge.
+
+Tone care: iTAX is named and credited ("Thai tax tools, iTAX among them, do this well. We are not
+trying to beat them at it."). A pitch that rubbishes an incumbent reads as unserious; a pitch that
+places itself precisely next to one reads as informed.
+
+**[VERIFY — competitive claim.]** "No tool consolidates multiple platforms" is the team's own
+review of what is available today, and the slide says so in as many words. It must be re-checked
+before public use, and it is the claim most likely to be challenged in Q&A.
+
+Speaker note (TH): the chapter-10 script in `src/js/content.js`.
+
+---
+
+## 11 — Market Opportunity
 
 | Field | Value |
 |---|---|
@@ -282,7 +366,7 @@ Speaker note (TH): เราไม่ได้เริ่มจากการ�
 
 ---
 
-## 10 — Business Model
+## 12 — Business Model
 
 | Field | Value |
 |---|---|
@@ -306,12 +390,44 @@ Speaker note (TH): ภาษีไม่ได้เป็นสิ่งที�
 
 ---
 
-## 11 — Why We Can Win
+## 13 — Feasibility
 
 | Field | Value |
 |---|---|
-| Chapter label | WHY US |
-| Reveal sequence | "Simple." → "Automatic." → "Accessible." |
+| Chapter label | Feasibility |
+| Headline | Built first. Priced second. |
+| Sub-line | The three assistants are not a plan. They run today — the screens you just saw came out of them. |
+| Target time | 0:45 |
+
+Three columns, colour-coded once so the status of every line is unambiguous:
+
+| Running today (mint) | Next (violet, dashed) | Planned for (pink) |
+|---|---|---|
+| Receipt OCR: merchant, tax ID, date, total | Sales-file import from Seller Centre | **No official export API.** The system reads an uploaded file from day one, so nothing waits on a platform partnership |
+| Rule checks against Revenue Department guidance | Automatic 40(8) income split | **Tax guidance can be wrong.** Every figure is labelled an estimate, not binding advice — check with an accountant or the Revenue Department before filing |
+| Deduction dashboard with per-category ceilings | Actual cost vs standard rate, compared | |
+| | LINE alerts before each deadline | |
+
+Key message: the technical capability is demonstrated, not asserted — and the two things most
+likely to go wrong have already been designed around rather than discovered later.
+
+The risk column is deliberately the last thing revealed in the chapter. Naming the two risks is
+what makes the first two columns believable; a pitch with no risks reads as one that has not
+looked.
+
+Closing line on the slide: marketplace connections to Shopee, Lazada, Facebook or LINE are
+roadmap. No partnership or integration is in place or announced.
+
+Speaker note (TH): the chapter-13 script in `src/js/content.js`.
+
+---
+
+## 14 — Why We Can Win
+
+| Field | Value |
+|---|---|
+| Chapter label | Key Drivers |
+| Reveal sequence | "Simple." → "Automatic." → "Accessible." (each replaces the last) |
 | Target time | 0:50 |
 
 | Word | Meaning |
@@ -328,7 +444,7 @@ Speaker note (TH): สิ่งที่จะทำให้ TicTaxFlow เต�
 
 ---
 
-## 12 — The Team
+## 15 — The Team
 
 | Field | Value |
 |---|---|
@@ -343,18 +459,17 @@ in a staggered 3 × 5 grid. Headline, one supporting line and the wordmark sit t
 
 | Card | Content |
 |---|---|
-| Photo 1 | Team member · badge: name + *Co-founder · Product* |
-| Mint | "Three people, one product." |
-| Photo 2 | Team member · badge: name + *Co-founder · Engineering* |
-| Lilac | "Sell with confidence." / "Let TicTaxFlow handle the complexity." |
-| Photo 3 | Team member · badge: name + *Co-founder · Tax & Ops* |
-| Peach | "So small businesses can focus on growing — not worrying." |
+| Photo 1 | **Worakraikan BinKan** · Computer Engineering Student |
+| Tint 1 | "Fall seven times, stand up eight." / *Leader* |
+| Photo 2 | **Piyamon Chuenpaew** · Computer Engineering Student |
+| Tint 2 | "Done is better than perfect." / *Developer* |
+| Photo 3 | **Kunakorn Yeamngam** · Computer Engineering Student |
+| Tint 3 | "If opportunity doesn't knock, build a door." / *Planner* |
 
-The closing line therefore still lands last, in the bottom-right card.
-
-> **One thing is still a placeholder: the three names**, which read *ชื่อ–นามสกุล*. Edit the
-> `<b>` inside each `.bbadge` in `src/html/d_ch09_12.html`, then rebuild. All three
-> photographs are in place.
+Names and roles are the team's own and are no longer placeholders. The mission line
+*"So small businesses can focus on growing — not worrying."* is now **spoken**, in the chapter-12
+script, rather than printed: the six cards already carry the message and the slide reads better
+without a seventh block of text.
 
 Photographs are the team's own files. They are cropped to a shared 3:4 frame and resized, in
 their original colours — nothing is generated, retouched or composited. To swap one, replace its
@@ -372,33 +487,55 @@ So small businesses can focus on growing, not worrying. ขอบคุณคร
 
 | # | Chapter | Target |
 |---|---|---|
-| 01 | Opening — phone, no copy | 0:30 |
-| 02 | One Seller, Many Channels | 0:50 |
-| 03 | The Invisible Number | 1:00 |
-| 04 | Tax Complexity | 0:50 |
-| 05 | Product Reveal | 0:45 |
-| 06 | Three Assistants | 1:00 |
-| 07 | The Magic Moment | 1:00 |
-| 08 | Inside the product | 0:45 |
-| 09 | Market Opportunity | 1:00 |
-| 10 | Business Model | 0:50 |
-| 11 | Why We Can Win | 0:50 |
-| 12 | Mission and Ending | 0:40 |
-| | **Total** | **9:40** |
+| 01 | Opening — the order feed, no copy | 0:25 |
+| 02 | One Seller, Many Channels | 0:40 |
+| 03 | The Invisible Number | 0:45 |
+| 04 | Tax Complexity | 0:40 |
+| 05 | **Why Now** | 0:45 |
+| 06 | Product Reveal | 0:30 |
+| 07 | Three Assistants | 0:50 |
+| 08 | The Magic Moment | 0:50 |
+| 09 | Inside the product | 0:45 |
+| 10 | **The Gap** | 0:45 |
+| 11 | Market Opportunity | 0:40 |
+| 12 | Business Model | 0:45 |
+| 13 | **Feasibility** | 0:45 |
+| 14 | Why We Can Win | 0:30 |
+| 15 | The Team and mission | 0:25 |
+| | **Total** | **10:00** |
+
+Fifteen chapters in ten minutes averages forty seconds each, which is tight. The budget is spent
+deliberately: the opening and the closing are short because their slides do the work, and the
+three chapters that carry the argument — 07 (how it works), 08 (the magic moment) and 13
+(feasibility) — get the most room.
+
+**If a run goes long, cut in this order:** 14 (Why We Can Win) can be delivered over the top of 13
+in one sentence; 11 (Market) can drop to the band alone; 04 can hold on one question instead of
+three. Do not cut 05 or 13 — they are the chapters that answer "why now" and "can you build it",
+and a panel scoring against the published criteria has fifteen points riding on each.
+
+The presenter panel (`P`) shows the target, the elapsed clock and an on-pace indicator against
+the cumulative target, so drift is visible before it becomes a problem.
+
+---
 
 ## Complete inventory of numbers used on the site
 
 | Number | Chapter | Source |
 |---|---|---|
-| Order notification amounts, orders-today count (chapter 1 phone screen) | 01 | Illustrative concept UI — story props, flagged in `factual-verification.md` |
+| Order amounts, the 11-order count and the ฿12,970 day total (chapter 1 screen) | 01 | Illustrative concept UI — story props, flagged in `factual-verification.md`. Internally consistent: the header is the sum of the rows |
 | 4 channels / 1 taxpayer | 02 | Source slide 2 |
 | ฿420K, ฿870K, ฿1.34M, ฿1.72M, ฿1.80M | 03 | Source slide 3 accumulation |
-| ฿1,800,000 VAT threshold | 03, 07, 09 | Source slides 3, 7, 9 |
-| ฿1,642,350 revenue this year | 07 | Source slide 7 mockup |
-| 91% progress | 07 | Source slide 7 mockup |
-| ฿157,650 remaining | 07 | Source slide 7 mockup |
-| ฿200K – ฿1.8M target band | 09 | Source slide 9 |
-| ฿199–299 per filing period | 10 | Source slide 10 |
-| ฿400–600 per year | 10 | Source slide 10 |
+| ฿1,800,000 VAT threshold | 03, 05, 08, 10, 11 | Source slides 3, 7, 9 |
+| ฿1,642,350 revenue this year | 08 | Source slide 7 mockup |
+| 91% progress | 08 | Source slide 7 mockup |
+| ฿157,650 remaining | 08 | Source slide 7 mockup |
+| ฿200K – ฿1.8M target band | 11 | Source slide 9 |
+| ฿199–299 per filing period | 12 | Source slide 10 |
+| ฿400–600 per year | 12 | Source slide 10 |
+| Year 2026 (platform income reporting begins) | 05 | Project brief — **[VERIFY]** |
+| 40–60 % standard deduction band | 05 | Revenue Code, via the project brief — **[VERIFY]** |
+| ภ.ง.ด.94 Jul–Sep / ภ.ง.ด.90 Jan–Mar filing periods | 05 | Revenue Code, via the project brief — **[VERIFY]** |
+| 40(8) income classification | 05, 10, 13 | Revenue Code, via the project brief — **[VERIFY]** |
 
 No other quantitative claim appears anywhere on the site.

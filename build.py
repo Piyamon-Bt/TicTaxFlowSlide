@@ -4,6 +4,10 @@
 Everything — CSS, markup, Three.js r149 (UMD) and the app scripts — is inlined,
 so the deck opens by double-clicking the file, works from a USB stick, and makes
 zero network requests (nothing can 404 on stage).
+
+src/js/phone.js and src/js/phone-model.js are deliberately NOT inlined. Every
+mockup in the deck is now a MacBook, so the 3D phone is unused; the sources are
+kept so the chapter-01 device can be reverted in one line if that changes.
 """
 import pathlib
 import sys
@@ -14,8 +18,8 @@ OUT = ROOT / "index.html"
 
 FAVICON = (
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
-    "%3Crect width='32' height='32' rx='7' fill='%2312100E'/%3E"
-    "%3Cpath d='M9 21.5l4.9-5.7 3.4 3.2 5.4-7.3 2.5 1.8-7.6 10.3-3.5-3.3-3.2 3.7z' fill='%23FF2D78'/%3E"
+    "%3Crect width='32' height='32' rx='7' fill='%23000000'/%3E"
+    "%3Cpath d='M9 21.5l4.9-5.7 3.4 3.2 5.4-7.3 2.5 1.8-7.6 10.3-3.5-3.3-3.2 3.7z' fill='%23D4AF37'/%3E"
     "%3C/svg%3E"
 )
 
@@ -37,12 +41,6 @@ HEAD = """<!doctype html>
 """
 
 TAIL = """
-<script>
-%s
-</script>
-<script>
-%s
-</script>
 <script>
 %s
 </script>
@@ -108,7 +106,6 @@ def main():
         + TAIL % (three, read("js/content.js"), read("js/brand-assets.js"),
                   read("js/ui-assets.js"), read("js/team-assets.js"),
                   read("js/seller-asset.js"), read("js/prop-models.js"),
-                  read("js/phone-model.js"), read("js/phone.js"),
                   read("js/three-layer.js"), read("js/app.js"))
     )
     OUT.write_text(html, encoding="utf-8")

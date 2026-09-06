@@ -12,10 +12,16 @@ what it rests on, and what must be confirmed before the deck is used publicly.
 
 | # | Claim on screen | Chapter | Rests on | Status |
 |---|---|---|---|---|
-| 1.1 | ฿1,800,000 is the VAT registration threshold | 03, 07, 09 | Source slide 3 | ⬜ Confirm the current threshold and its wording with the Revenue Department before public use. The site already labels it "figure as given in the pitch source" and carries an on-slide note to confirm current rules. |
+| 1.1 | ฿1,800,000 is the VAT registration threshold | 03, 05, 08, 11 | Source slide 3 | ⬜ Confirm the current threshold and its wording with the Revenue Department before public use. The site already labels it "figure as given in the pitch source" and carries an on-slide note to confirm current rules. |
 | 1.2 | Reaching the threshold may create a VAT-registration duty | 03 | Source slide 3, which is itself conditional (*"อาจมีหน้าที่เกี่ยวกับการจด VAT"*) | ⬜ Keep the conditional phrasing. Do not upgrade "may" to "must" without a legal check. |
 | 1.3 | Expenses can be deducted at actual cost or by a standard/lump-sum method | 04 | Source slide 4 (which frames the second branch as มาตรา 40(8)) | ⬜ The site says "Actual cost" / "Standard — rate by activity type" and cites no section number, deliberately. Confirm the correct legal reference before adding one. |
-| 1.4 | Filing periods exist and matter | 04, 06 | Source slide 4 and 6 | ⬜ Generic and safe, but confirm before naming any specific date or period. |
+| 1.4 | Filing periods exist and matter | 04, 07 | Source slide 4 and 6 | ⬜ Generic and safe, but confirm before naming any specific date or period. |
+
+| 1.5 | **From 2026, e-commerce platforms report seller income to the Revenue Department directly** | 05 | Project brief (ปี 2569) | ⬜ **The highest-risk claim in the deck.** It is the whole argument of chapter 05 and it names a year. Confirm the effective date, the scope (which platforms, which sellers, which data) and whether it is in force or announced, before any public use. The slide carries a visible caveat. If it cannot be confirmed in time, soften the headline to "the platforms are starting to report" and drop the year. |
+| 1.6 | **Two filings a year: ภ.ง.ด.94 (Jul–Sep) and ภ.ง.ด.90 (Jan–Mar)** | 05 | Project brief, Revenue Code | ⬜ Named periods and named forms — exactly what §1.4 previously avoided. Confirm both form numbers and both windows with the Revenue Department. Chapter 12's pricing is argued from these two windows, so if they change, the business model slide changes with them. |
+| 1.7 | **The standard deduction is 40–60 % by activity type** | 05 | Project brief, Revenue Code | ⬜ A specific numeric band. Confirm the rates and which activities they apply to. |
+| 1.8 | **Online selling income is เงินได้ประเภท 40(8)** | 05, 10, 13 | Project brief, Revenue Code | ⬜ The site now names the section, where it previously avoided doing so (see §1.3). Confirm the classification is correct for the seller profile being described. |
+| 1.9 | **Crossing ฿1.8M means a VAT filing every month** | 05 | Project brief | ⬜ Confirm the filing frequency and any exceptions. |
 
 **Rule for the presenter:** the deck raises tax questions; it does not answer them on screen.
 If asked for a legal position, say the product's rules are defined by the team and the legal
@@ -31,6 +37,18 @@ positions are pending professional review.
 
 To add real sizing later, source it (NSO, ETDA, DBD, platform disclosures), cite it on the slide,
 and delete the placeholder chips.
+
+## 2a. Competitive claims — chapter 10
+
+| # | Claim on screen | Rests on | Status |
+|---|---|---|---|
+| 2a.1 | "Thai tax tools, iTAX among them, do this well" (calculation, filing, deduction look-up) | Team's own review | ⬜ Fair and complimentary, but it names a real company. Keep the framing positive; never characterise a competitor's product as bad. |
+| 2a.2 | **"Nobody consolidates" — no tool in the market pulls sales from multiple platforms automatically** | Team's own review of tools available today | ⬜ **The most challengeable claim in the deck after §1.5.** It is a negative claim about an entire market, which cannot be proven, only surveyed. The slide says "Based on our own review of the Thai tax tools available to sellers today" in as many words — keep that line visible. In Q&A, answer with what was checked and when, not with certainty. |
+
+If either claim cannot be stood behind, chapter 10 still works with the right-hand column alone:
+the four consolidation steps are hard whether or not a competitor has solved them.
+
+---
 
 ## 3. Product capabilities
 
@@ -107,20 +125,23 @@ product page, or in printed marketing — check each platform's brand guidelines
 you to request permission for anything beyond editorial reference. Inside a competition pitch this
 is ordinary practice.
 
-## 8. Chapter 01 phone screen — illustrative props
+## 8. Chapter 01 screen — illustrative props
 
-The opening chapter carries no written claim: it is a phone filling with order
-notifications. Everything drawn on that screen is a story prop, not data:
+The opening chapter carries no written claim: it is a MacBook with an order feed filling up.
+Everything drawn on that screen is a story prop, not data:
 
 | On the screen | Status |
 |---|---|
-| Order amounts (฿640 – ฿3,120) | Illustrative. Typical small-order values, not measured. |
-| "วันนี้ NN ออเดอร์" counter | Illustrative, and it ticks up live for effect. |
-| Clock 20:26 and date | Illustrative, fixed. |
-| Platform logos (Shopee, Lazada, Facebook, LINE) | The seller's real channels, as in the source story. The marks are the presenter's own supplied files, used unmodified on white tiles — see §7a. Nothing on this screen claims a relationship with any of them. |
+| Order amounts (฿640 – ฿3,150) | Illustrative. Typical small-order values, not measured. |
+| "11 orders" counter | Illustrative. It is the arithmetic sum of the `data-ord` values on the rows shown, so it can never disagree with the list beneath it. |
+| "฿12,970" day total | Illustrative. Likewise the exact sum of the eight row amounts — checked: 2,380 + 1,180 + 860 + 2,450 + 790 + 640 + 1,520 + 3,150 = 12,970. |
+| Relative times ("ตอนนี้", "6 นาที") | Illustrative, fixed. |
+| Platform logos (Shopee, Lazada, Facebook, LINE) | The seller's real channels, as in the source story. The marks are the presenter's own supplied files, used unmodified on white — see §7a. Nothing on this screen claims a relationship with any of them. |
 
 Nothing here is presented as traction, revenue or a platform integration, and the chapter
-carries no on-screen text that could be read as a claim. If a judge asks, the honest answer
+carries no on-screen text that could be read as a claim. Note that the feed is **concept UI for
+the story**, not a TicTaxFlow screen — it is the seller's problem, not the product. The real
+product screens are chapters 08 and 09. If a judge asks, the honest answer
 is: an illustration of a normal selling day, not our numbers.
 
 ## 9. Before the deck leaves the room

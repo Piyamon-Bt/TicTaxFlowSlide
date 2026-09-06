@@ -1,6 +1,48 @@
 # QA report
 
-Build tested: `index.html`, 2.00 MB, fully self-contained. Inlined binary payload: the 3D phone
+> ## ⚠ This report predates two redesigns — re-run before relying on it
+>
+> The deck has since moved from **twelve snap-locked slides** to **fifteen pinned, scroll-scrubbed
+> scenes** (see `visual-motion-spec.md` §5), changed palette from black-and-gold to the
+> navy-and-violet "Ledger" system (§1), replaced the 3D iPhone with a MacBook so every mockup is
+> the same device, and added chapters 05 (Why Now), 10 (The Gap) and 13 (Feasibility). Everything
+> below was measured against the old structure, so the tables are historical, not current.
+>
+> **Re-checked by hand after the redesign** (Chromium, 1440 × 900 and 390 × 844):
+>
+> | Check | Result |
+> |---|---|
+> | All 15 scenes render, dark and light grounds correct | pass |
+> | Chapter-03 count scrubs 0 → ฿1,800,000 and back | pass |
+> | Chapter-07 card reaches ฿1,642,350 / 91 % / ฿157,650 | pass |
+> | Chapter-08 screen follows scroll position, 1 → 2 → 3 | pass |
+> | `→` steps beat-by-beat, then chapter-to-chapter | pass |
+> | Motion off: scenes collapse to 12 screens, final values printed | pass |
+> | Console errors | none |
+> | 390 × 844: chapters 02, 05, 07, 09, 10, 13 recomposed for one column | pass |
+> | Chapter-01 feed counters equal the sum of the rows shown (11 / ฿12,970) | pass |
+> | Chapter-05 year strip sweeps; both filing windows legible at 390 px | pass |
+> | Chapter counter reads `/ 15`, written from `S.chapters.length` | pass |
+> | Chapter targets sum to exactly 600 s | pass |
+> | No content taller than its stage at 390 / 1280 / 1440 / 1920 | pass |
+>
+> **Not re-run:** the Playwright suite in `test/`. Playwright is not installed in this
+> environment, so `shoot.js`, `func.js`, `perf.js` and `summary.js` have **not** been executed
+> against the redesign. Two of them also need updating first:
+>
+> - `func.js` asserts that one `PageDown` changes the chapter number. It now advances a *beat*,
+>   which may stay inside the same chapter — the assertion needs to allow that.
+> - `shoot.js` waits on `.chapter.is-active`; the class no longer exists. Scene progress is
+>   published as `--p` on each `.scene` instead.
+>
+> Frame rate under the new model has **not** been measured on a real GPU. The engine does one
+> `requestAnimationFrame` per scroll burst and writes only custom properties, but that claim is
+> reasoned, not benchmarked.
+
+---
+
+Build tested: `index.html`, 2.00 MB (the current build is ~1.6 MB — the 3D phone mesh was
+removed). Inlined binary payload at the time: the 3D phone
 mesh (406 KB), the parcel and banknote prop meshes (41 KB), the four platform logos (94 KB), four
 product screenshots (259 KB), the chapter-02 seller photograph (259 KB) and three chapter-12 team
 photographs (202 KB), all base64.
